@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>CS GO Discount Monitor Bot</title>
+
 </head>
 <body>
   <h1>CS GO Discount Monitor Bot</h1>
