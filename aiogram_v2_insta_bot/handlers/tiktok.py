@@ -17,4 +17,4 @@ async def handle_tiktok_video(message: types.Message):
     logger.info("TikTok media handling complete")
 
 def setup(dp: Dispatcher):
-    dp.register_message_handler(handle_tiktok_video, filters.Regexp('^https?://www\.tiktok\.com/@[a-zA-Z0-9_]+/video/[0-9]+'))
+    dp.register_message_handler(handle_tiktok_video, filters.Regexp('^https?://[a-zA-Z0-9_]+\.tiktok\.com/.*'))
