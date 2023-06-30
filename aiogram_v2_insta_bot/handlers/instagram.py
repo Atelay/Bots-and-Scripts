@@ -1,5 +1,6 @@
 from aiogram import Dispatcher, types, filters
 import instaloader
+import requests
 
 from utils.bot_logger import logger
 
@@ -16,7 +17,11 @@ async def handle_instagram_content(message: types.Message):
                   f"\n{'Location: ' + post.location if post.location else ''}"
 
         if post.typename == 'GraphVideo':  # Video
-            await message.reply_video(video=post.video_url, caption=caption)
+            try:
+                await message.reply_video(video=post.video_url, caption=caption)
+            except:
+                response = requests.get(post.video_url, stream=True)
+                await message.reply_video(video=response.content, caption=caption)
         elif post.typename == 'GraphImage':  # Photo
             await message.reply_photo(photo=post.url, caption=caption)
         elif post.typename == 'GraphSidecar':  # Carousel
